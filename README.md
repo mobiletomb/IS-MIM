@@ -5,7 +5,8 @@ This repository contains the code for our self-supervised pre-training method fo
 We run our code on Python 3.9, PyTorch 1.12.1, CUDA 11.6.0, and cudann 8.4.1.50. Besides software packages required in nnUNet project, **monai** is need install:
 ```
 pip install monai
-2. Functions of scripts:
-For pre-training:
-For finetuneing:
+```
+2. Functions of scripts:   
+For pre-training:   
+For fine-tuning:
 3. Setting up the repository
