@@ -20,12 +20,12 @@ You need plug our code in [nnUNet project](https://github.com/MIC-DKFZ/nnUNet)
 
 ## Pretraining
 Pretraining with UNet automatic searched by nnUNet
-、、、
+```
   python <~/nnUNet/nnunet/runtraining_mim.py> 3d_fullres mimTrainer <Task> <Fold> -mr <mask ratio> -mt <mask type> -ms <mask size> --lt <predict/reconstruct> --synthesize <True/False>
-、、、
+```
 
 ## Finetuning
 Finetuning the pretrained model
-、、、
+```
   python /home/qlc/model/nnUNet/nnunet/run/run_training_finetune.py 3d_fullres finetuneV2 1 all -pre */model_best.pth -ft encoder
-、、、
+```
