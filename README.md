@@ -12,7 +12,7 @@ We run our code on Python 3.9, PyTorch 1.12.1, CUDA 11.6.0, and cudann 8.4.1.50.
   pip install monai
   pip install SimpleITK
 ```
-2. **Setting up the repository：**
+2. **Setting up the repository：**  
 You need plug our code in [nnUNet project](https://github.com/MIC-DKFZ/nnUNet) 
 + Add network_architecture into nnUNet/nnunet/network_architecture
 + Add run into  nnUNet/nnunet/run
