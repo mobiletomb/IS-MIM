@@ -27,5 +27,5 @@ Pretraining with UNet automatic searched by nnUNet
 ## Finetuning
 Finetuning the pretrained model
 ```
-  python /home/qlc/model/nnUNet/nnunet/run/run_training_finetune.py 3d_fullres finetuneV2 1 all -pre */model_best.pth -ft encoder
+  python  <~/nnUNet/nnunet/run/run_training_finetune.py> 3d_fullres finetuneV2 1 all -pre */model_best.pth -ft encoder
 ```
