@@ -3,7 +3,7 @@ This repository contains the code for our self-supervised pre-training method fo
 ![image](./overview.png)
 
 ## Dataset
-BraTS 2020[homepage](https://www.med.upenn.edu/cbica/brats2020/data.html) is used in this work for pretraining and funetuning. 
+BraTS 2020[[homepage]](https://www.med.upenn.edu/cbica/brats2020/data.html) is used in this work for pretraining and funetuning. 
 
 ## Installation
 1. **System requirements：**  
