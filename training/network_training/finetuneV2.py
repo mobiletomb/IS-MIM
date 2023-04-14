@@ -146,7 +146,7 @@ class finetune(nnUNetTrainerV2):
                 self.load_encoder_weight()
             elif self.freeze_type is None:
                 self.print_to_log_file('Freeze type:', self.freeze_type)
-                pass
+                self.load_pretrain_weight()
             elif self.freeze_type == 'bb':
                 self.print_to_log_file('Freeze type:', self.freeze_type)
                 self.load_backbone_weight()
@@ -189,7 +189,40 @@ class finetune(nnUNetTrainerV2):
             para_finetune.requires_grad = False
 
         del self.ssl_network
+    
+    def load_pretrain_weight(self):
+        conv_op = nn.Conv3d
+        dropout_op = nn.Dropout3d
+        norm_op = nn.InstanceNorm3d
 
+        norm_op_kwargs = {'eps': 1e-5, 'affine': True}
+        dropout_op_kwargs = {'p': 0, 'inplace': True}
+        net_nonlin = nn.LeakyReLU
+        net_nonlin_kwargs = {'negative_slope': 1e-2, 'inplace': True}
+
+        self.ssl_network = Generic_UNet(self.num_input_channels, self.base_num_features, 4,
+                                        len(self.net_num_pool_op_kernel_sizes),
+                                        self.conv_per_stage, 2, conv_op, norm_op, norm_op_kwargs, dropout_op,
+                                        dropout_op_kwargs,
+                                        net_nonlin, net_nonlin_kwargs, True, False, lambda x: x,
+                                        InitWeights_He(1e-2),
+                                        self.net_num_pool_op_kernel_sizes, self.net_conv_kernel_sizes, False, True,
+                                        True)
+
+        self.ssl_network.load_state_dict(torch.load(self.pretrain))
+
+        for para_finetune, para in zip(self.network.conv_blocks_context.parameters(),
+                                       self.ssl_network.conv_blocks_context.parameters()):
+            para_finetune.data = para.data
+            para_finetune.requires_grad = True
+
+        for para_finetune, para in zip(self.network.conv_blocks_localization.parameters(),
+                                       self.ssl_network.conv_blocks_localization.parameters()):
+            para_finetune.data = para.data
+            para_finetune.requires_grad = True
+
+        del self.ssl_network
+    
     def load_encoder_weight(self):
         conv_op = nn.Conv3d
         dropout_op = nn.Dropout3d
