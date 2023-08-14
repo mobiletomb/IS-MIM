@@ -1,5 +1,5 @@
 # Self-Supervised Learning via Reconstructing Multi-Modality MRI for Brain Tumor Segmentation
-This repository contains the code for our self-supervised pre-training method for brain tumor segmentation. Our code is built on nnUNet, please install nnUNet correctly first and plug our code in follow the installation guide.
+This repository contains the code for our self-supervised pre-training method for brain tumor segmentation. Our code is built on nnUNet, please install nnUNet correctly first and plug our code in follow the installation guide. The pre-trained weights and finetuned weights can be found in <a href="https://drive.google.com/file/d/1bm6LYSQRmWMr3PKMPyPCVGiCl8-nHvyO/view?usp=drive_link"> pretrain</a>. and <a href="https://drive.google.com/file/d/17pS1wyPhV9HuteIPn_bOup7ojMQ8Jqkc/view?usp=drive_link"> finetune</a>. 
 ![image](./overview.jpg)
 
 ## Dataset
@@ -19,7 +19,7 @@ You need plug our code in [nnUNet project](https://github.com/MIC-DKFZ/nnUNet)
 + Add training/network_training into nnUNet/nnunet/training/networkd_training
 
 ## Pretraining
-Pretraining with UNet automatic searched by nnUNet
+Pretraining with UNet automatic searched by nnUNet. 
 ```
   python <~/nnUNet/nnunet/run/run_training_mim.py> 3d_fullres mimTrainer <Task> <Fold> -mr <mask ratio> -mt <mask type> -ms <mask size> --lt <predict/reconstruct> --synthesize <True/False>
 ```
