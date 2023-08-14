@@ -1,7 +1,7 @@
 # Self-Supervised Learning via Reconstructing Multi-Modality MRI for Brain Tumor Segmentation
 This repository contains the code for our self-supervised pre-training method for brain tumor segmentation. Our code is built on nnUNet, please install nnUNet correctly first and plug our code in following the installation guide. The pre-trained weights and finetuned weights can be found in <a href="https://drive.google.com/file/d/1bm6LYSQRmWMr3PKMPyPCVGiCl8-nHvyO/view?usp=drive_link"> pretrain</a>. and <a href="https://drive.google.com/file/d/17pS1wyPhV9HuteIPn_bOup7ojMQ8Jqkc/view?usp=drive_link"> finetune</a>. 
 
-![image](./overview.jpg)
+![image](./overview.png)
 
 ## Dataset
 BraTS 2020 [[homepage]](https://www.med.upenn.edu/cbica/brats2020/data.html) is used in this work for pretraining and funetuning. 
